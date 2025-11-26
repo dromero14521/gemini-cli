@@ -59,6 +59,8 @@ export interface UIState {
   debugMessage: string;
   quittingMessages: HistoryItem[] | null;
   isSettingsDialogOpen: boolean;
+  isSwarmDialogOpen: boolean;
+  isSwarmModeActive: boolean;
   isSessionBrowserOpen: boolean;
   isModelDialogOpen: boolean;
   isPermissionsDialogOpen: boolean;

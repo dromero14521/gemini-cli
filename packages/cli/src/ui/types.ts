@@ -139,6 +139,11 @@ export type HistoryItemHelp = HistoryItemBase & {
   timestamp: Date;
 };
 
+export type HistoryItemSwarm = HistoryItemBase & {
+  type: 'swarm';
+  timestamp: Date;
+};
+
 export type HistoryItemStats = HistoryItemBase & {
   type: 'stats';
   duration: string;
@@ -252,6 +257,7 @@ export type HistoryItemWithoutId =
   | HistoryItemWarning
   | HistoryItemAbout
   | HistoryItemHelp
+  | HistoryItemSwarm
   | HistoryItemToolGroup
   | HistoryItemStats
   | HistoryItemModelStats
@@ -274,6 +280,7 @@ export enum MessageType {
   USER = 'user',
   ABOUT = 'about',
   HELP = 'help',
+  SWARM = 'swarm',
   STATS = 'stats',
   MODEL_STATS = 'model_stats',
   TOOL_STATS = 'tool_stats',

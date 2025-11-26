@@ -167,6 +167,8 @@ export const AppContainer = (props: AppContainerProps) => {
   const [quittingMessages, setQuittingMessages] = useState<
     HistoryItem[] | null
   >(null);
+  const [isSwarmDialogOpen, setSwarmDialogOpen] = useState<boolean>(false);
+  const [isSwarmModeActive, setSwarmModeActive] = useState<boolean>(false);
   const [showPrivacyNotice, setShowPrivacyNotice] = useState<boolean>(false);
   const [themeError, setThemeError] = useState<string | null>(
     initializationResult.themeError,
@@ -574,6 +576,18 @@ Logging in with Google... Restarting Gemini CLI to continue.
   const { isSettingsDialogOpen, openSettingsDialog, closeSettingsDialog } =
     useSettingsCommand();
 
+  const openSwarmDialog = useCallback(() => {
+    setSwarmDialogOpen(true);
+  }, []);
+
+  const closeSwarmDialog = useCallback(() => {
+    setSwarmDialogOpen(false);
+  }, []);
+
+  const setSwarmModeActive = useCallback((active: boolean) => {
+    setSwarmModeActive(active);
+  }, []);
+
   const { isModelDialogOpen, openModelDialog, closeModelDialog } =
     useModelCommand();
 
@@ -586,6 +600,7 @@ Logging in with Google... Restarting Gemini CLI to continue.
       openEditorDialog,
       openPrivacyNotice: () => setShowPrivacyNotice(true),
       openSettingsDialog,
+      openSwarmDialog,
       openSessionBrowser,
       openModelDialog,
       openPermissionsDialog,
@@ -1340,6 +1355,7 @@ Logging in with Google... Restarting Gemini CLI to continue.
     !!loopDetectionConfirmationRequest ||
     isThemeDialogOpen ||
     isSettingsDialogOpen ||
+    isSwarmDialogOpen ||
     isModelDialogOpen ||
     isPermissionsDialogOpen ||
     isAuthenticating ||
@@ -1421,6 +1437,8 @@ Logging in with Google... Restarting Gemini CLI to continue.
       debugMessage,
       quittingMessages,
       isSettingsDialogOpen,
+      isSwarmDialogOpen,
+      isSwarmModeActive,
       isSessionBrowserOpen,
       isModelDialogOpen,
       isPermissionsDialogOpen,
@@ -1608,6 +1626,9 @@ Logging in with Google... Restarting Gemini CLI to continue.
       handleEditorSelect,
       exitEditorDialog,
       exitPrivacyNotice,
+      openSwarmDialog,
+      closeSwarmDialog,
+      setSwarmModeActive,
       closeSettingsDialog,
       closeModelDialog,
       openPermissionsDialog,

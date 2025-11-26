@@ -30,6 +30,9 @@ export interface UIActions {
   ) => void;
   exitEditorDialog: () => void;
   exitPrivacyNotice: () => void;
+  openSwarmDialog: () => void;
+  closeSwarmDialog: () => void;
+  setSwarmModeActive: (active: boolean) => void;
   closeSettingsDialog: () => void;
   closeModelDialog: () => void;
   openPermissionsDialog: (props?: PermissionsDialogProps) => void;

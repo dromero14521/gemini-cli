@@ -12,6 +12,7 @@ import { ShellConfirmationDialog } from './ShellConfirmationDialog.js';
 import { ConsentPrompt } from './ConsentPrompt.js';
 import { ThemeDialog } from './ThemeDialog.js';
 import { SettingsDialog } from './SettingsDialog.js';
+import { SwarmDialog } from './SwarmDialog.js';
 import { AuthInProgress } from '../auth/AuthInProgress.js';
 import { AuthDialog } from '../auth/AuthDialog.js';
 import { ApiAuthDialog } from '../auth/ApiAuthDialog.js';
@@ -149,6 +150,9 @@ export const DialogManager = ({
         />
       </Box>
     );
+  }
+  if (uiState.isSwarmDialogOpen) {
+    return <SwarmDialog onClose={uiActions.closeSwarmDialog} />;
   }
   if (uiState.isModelDialogOpen) {
     return <ModelDialog onClose={uiActions.closeModelDialog} />;
