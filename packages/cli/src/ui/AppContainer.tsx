@@ -584,10 +584,6 @@ Logging in with Google... Restarting Gemini CLI to continue.
     setSwarmDialogOpen(false);
   }, []);
 
-  const setSwarmModeActive = useCallback((active: boolean) => {
-    setSwarmModeActive(active);
-  }, []);
-
   const { isModelDialogOpen, openModelDialog, closeModelDialog } =
     useModelCommand();
 
