@@ -19,6 +19,7 @@ import stringWidth from 'string-width';
 import { useShellHistory } from '../hooks/useShellHistory.js';
 import { useReverseSearchCompletion } from '../hooks/useReverseSearchCompletion.js';
 import { useCommandCompletion } from '../hooks/useCommandCompletion.js';
+import { useAgentCompletion } from '../hooks/useAgentCompletion.js';
 import type { Key } from '../hooks/useKeypress.js';
 import { useKeypress } from '../hooks/useKeypress.js';
 import { keyMatchers, Command } from '../keyMatchers.js';
@@ -170,6 +171,8 @@ export const InputPrompt: React.FC<InputPromptProps> = ({
     shellModeActive,
     config,
   );
+
+  const agentCompletion = useAgentCompletion(buffer);
 
   const reverseSearchCompletion = useReverseSearchCompletion(
     buffer,
@@ -943,6 +946,7 @@ export const InputPrompt: React.FC<InputPromptProps> = ({
   const getActiveCompletion = () => {
     if (commandSearchActive) return commandSearchCompletion;
     if (reverseSearchActive) return reverseSearchCompletion;
+    if (agentCompletion.showSuggestions) return agentCompletion;
     return completion;
   };
 
